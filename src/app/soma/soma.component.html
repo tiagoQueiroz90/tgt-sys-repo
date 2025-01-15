@@ -1,0 +1,10 @@
+<h1>Soma em cada iteração</h1>
+<mat-card>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let soma of somaValues; let i = index">
+        Iteração {{ i + 1 }}: SOMA = {{ soma }}
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>

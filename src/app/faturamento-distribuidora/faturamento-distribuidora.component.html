@@ -1,0 +1,32 @@
+<div style="display: flex; row-gap: 5rem; align-items: flex-start; flex-direction: column;">
+  <div style="display: flex; flex-direction: column;">
+    <h1>Faturamento Diário</h1>
+    <mat-card>
+      <mat-card-content>
+        <p><strong>Menor valor de faturamento:</strong> {{ menorValor | currency: "BRL"}}</p>
+        <p><strong>Maior valor de faturamento:</strong> {{ maiorValor | currency: "BRL" }}</p>
+        <p><strong>Dias com faturamento acima da média mensal:</strong> {{ diasAcimaMedia }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <h1>Faturamento por Estado</h1>
+    <table mat-table [dataSource]="faturamentoEstado" class="mat-elevation-z8 demo-table">
+      <ng-container matColumnDef="UF">
+        <th mat-header-cell *matHeaderCellDef> UF </th>
+        <td mat-cell *matCellDef="let estado of faturamentoEstado"> {{estado.estado}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Faturamento">
+        <th mat-header-cell *matHeaderCellDef> Faturamento (R$) </th>
+        <td mat-cell *matCellDef="let estado of faturamentoEstado"> {{estado.valor | currency: 'BRL'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Percentual">
+        <th mat-header-cell *matHeaderCellDef> Percentual </th>
+        <td mat-cell *matCellDef="let estado of faturamentoEstado"> {{estado.percentual}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Calculadora de Fibonacci</h1>
+  <div class="content">
+    <mat-form-field class="example-form-field">
+      <mat-label>Digite um número</mat-label>
+      <input matInput type="number" required class="no-arrows" [(ngModel)]="inputNumber">
+      <mat-error *ngIf="!inputNumber">
+        <strong>Campo obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="desabilitarBotao()" 
+    class="btn-calcular" mat-raised-button color="primary" 
+    (click)="calcularFibonacci()">Calcular Fibonacci</button>
+    <p class="mensagem">
+      {{ message }}
+    </p>
+  </div>
+</div>
+  
